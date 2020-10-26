@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的条件渲染</title>
+    <script src="./../../../library/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-if="isShow">hello world</div>
+    <div v-show="isShow">hello world</div>
+    <div>
+        <div v-if="show === 'a'">这是一个a</div>
+        <div v-else-if="show === 'b'">这是一个b</div>
+        <div v-else>啥也不是</div>
+    </div>
+    <div>
+        // 复用性：vm.hide = true input的value不会改变
+        <label v-if="hide">
+            用户名：<input>
+        </label>
+        <label v-else>
+            电子邮箱：<input>
+        </label>
+    </div>
+</div>
+</body>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            show: '',
+            isShow: true,
+            hide: false,
+        },
+    });
+</script>
+</html>

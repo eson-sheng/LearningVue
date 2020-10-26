@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的样式绑定</title>
+    <script src="./../../../library/vue.min.js"></script>
+</head>
+<style>
+    .active {
+        color: crimson;
+    }
+</style>
+<body>
+<div id="app">
+    <div :class="{active: isActive}" @click="handleDivClick1">Hello world</div>
+    <div :class="[active]" @click="handleDivClick2">Hello world</div>
+    <div :style="[styleObj, {fontSize: '20px'}]" @click="handleDivClick3">Hello world</div>
+</div>
+</body>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            active: '',
+            isActive: false,
+            styleObj: {
+              color: 'black',
+            },
+        },
+        methods: {
+            handleDivClick1: function () {
+                return this.isActive = !this.isActive;
+            },
+            handleDivClick2: function () {
+                return this.active = this.active === '' ? 'active' : '';
+            },
+            handleDivClick3: function () {
+                return this.styleObj.color = this.styleObj.color === 'black' ? 'crimson' : 'black';
+            },
+        }
+    });
+</script>
+</html>
