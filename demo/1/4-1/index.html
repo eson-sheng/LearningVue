@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件使用中的细节点</title>
+    <script src="./../../../library/vue.min.js"></script>
+</head>
+<body>
+<div id="root">
+    <table>
+        <tbody>
+        <tr is="row"></tr>
+        <tr is="row"></tr>
+        <tr is="row"></tr>
+        </tbody>
+    </table>
+    <div ref="dom" @click="handleClick">alert</div>
+    <div>
+        计数1：
+        <counter ref="one" @change="handleChange"></counter>
+        计数2：
+        <counter ref="two" @change="handleChange"></counter>
+        总和：
+        <div>{{total}}</div>
+    </div>
+</div>
+</body>
+<script>
+    Vue.component('row', {
+        template: `
+          <tr>
+          <td> {{ content }} </td>
+          </tr>`,
+        data: function () {
+            return {
+                content: '这是一行数据',
+            }
+        },
+    });
+
+    Vue.component('counter', {
+        template: `
+          <div @click="handleClick">{{ number }}</div>`,
+        data: function () {
+            return {
+                number: 0,
+            }
+        },
+        methods: {
+            handleClick: function () {
+                this.number++;
+                this.$emit('change', this.number);
+            }
+        }
+    });
+
+    let vm = new Vue({
+        el: '#root',
+        data: {
+            total: 0,
+        },
+        methods: {
+            handleClick: function () {
+                // 通过ref获取dom节点
+                console.log(this.$refs.dom, this.$refs.dom.innerHTML);
+                alert('click');
+            },
+            handleChange: function (e) {
+                console.log(e);
+                console.log(this.$refs.one.number);
+                console.log(this.$refs.two.number);
+                let ref = this.$refs;
+                this.total = ref.one.number + ref.two.number;
+            }
+        },
+    });
+</script>
+</html>

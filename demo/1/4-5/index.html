@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非父子组件间的传值(Bus/总线/发布订阅模式/观察者模式)</title>
+    <script src="./../../../library/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <child main="Eson"></child>
+    <child main="Sheng"></child>
+</div>
+</body>
+<script>
+    Vue.prototype.bus = new Vue();
+
+    Vue.component('child', {
+        props: {
+            main: String,
+        },
+        data() {
+            return {
+                selfMain: this.main,
+            }
+        },
+        template: `
+          <div @click="handleClick">{{ selfMain }}</div>`,
+        methods: {
+            handleClick: function () {
+                alert(this.selfMain);
+                this.bus.$emit('change', this.selfMain);
+            }
+        },
+        mounted() {
+            let that = this;
+            this.bus.$on('change', function (msg) {
+                that.selfMain = msg;
+            });
+        }
+    });
+
+    let vm = new Vue({
+        el: '#root',
+    });
+</script>
+</html>

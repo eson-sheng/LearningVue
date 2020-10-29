@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的作用域插槽</title>
+    <script src="./../../../library/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <ul>
+        <child>
+            <template slot-scope="props">
+                <li>{{props.item}}</li>
+            </template>
+        </child>
+    </ul>
+</div>
+</body>
+<script>
+
+    Vue.component('child', {
+        data() {
+            return {
+                list: [2, 4, 5, 7, 3],
+            }
+        },
+        template: `
+          <div>
+          <slot v-for="item of list" :item="item"></slot>
+          </div>
+        `,
+    });
+
+    let vm = new Vue({
+        el: '#root',
+    });
+</script>
+</html>
