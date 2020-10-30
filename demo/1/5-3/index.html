@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在Vue中同时使用过渡和动画</title>
+    <link rel="stylesheet" href="../../../library/animate.css">
+    <style>
+        /*@keyframes bounce-in {*/
+        /*    0% {*/
+        /*        transform: scale(0);*/
+        /*    }*/
+        /*    50% {*/
+        /*        transform: scale(1.5);*/
+        /*    }*/
+        /*    100% {*/
+        /*        transform: scale(1);*/
+        /*    }*/
+        /*}*/
+
+        /*.active {*/
+        /*    transform-origin: left center;*/
+        /*    animation: bounce-in 2s;*/
+        /*}*/
+
+        /*.leave {*/
+        /*    transform-origin: left center;*/
+        /*    animation: bounce-in 2s reverse;*/
+        /*}*/
+
+        .fade-enter, .fade-leave-to {
+            opacity: 0;
+        }
+
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 1s;
+        }
+    </style>
+    <script src="./../../../library/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <transition
+            :duration="{enter:3000,leave:1000}"
+            name="fade"
+            appear
+            enter-active-class="animate__animated animate__tada fade-enter-active"
+            leave-active-class="animate__animated animate__zoomOutRight fade-leave-active"
+            appear-active-class="animate__animated animate__tada"
+    >
+        <h1 v-if="show">hello world</h1>
+    </transition>
+    <button @click="handleClick">显示/不显示</button>
+</div>
+</body>
+<script>
+
+    let vm = new Vue({
+        el: '#root',
+        data: {
+            show: true,
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show;
+            }
+        }
+    });
+
+</script>
+</html>

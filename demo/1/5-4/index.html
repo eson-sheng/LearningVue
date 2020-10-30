@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的Js动画与Velocity.js的结合</title>
+    <script src="./../../../library/vue.js"></script>
+    <script src="./../../../library/velocity.min.js"></script>
+</head>
+<body>
+<div id="root">
+    <transition
+            name="fade"
+            @before-enter="handleBefore"
+            @enter="handle"
+            @after-enter="handleAfter"
+            @before-leave="handleBefore"
+            @leave="handle"
+            @after-leave="handleAfter"
+    >
+        <h1 v-if="show">hello world</h1>
+    </transition>
+    <button @click="handleClick">显示/不显示</button>
+</div>
+</body>
+<script>
+
+    let vm = new Vue({
+        el: '#root',
+        data: {
+            show: true,
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show;
+            },
+            handleBefore: function (el) {
+                // console.log(el);
+                // el.style.color = 'pink';
+                el.style.opacity = '0';
+            },
+            handle: function (el, done) {
+                // setTimeout(() => {
+                //     el.style.color = 'red';
+                // }, 2000);
+                //
+                // setTimeout(() => {
+                //     done();
+                // }, 5000);
+                Velocity(el, {opacity: '1'}, {duration: 2000, complete: done});
+            },
+            handleAfter: function (el) {
+                // el.style.color = 'black';
+                console.log(el + '动画结束');
+            },
+        }
+    });
+
+</script>
+</html>

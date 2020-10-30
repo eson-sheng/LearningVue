@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在Vue中使用Animate.css库</title>
+    <link rel="stylesheet" href="../../../library/animate.css">
+    <style>
+        /*@keyframes bounce-in {*/
+        /*    0% {*/
+        /*        transform: scale(0);*/
+        /*    }*/
+        /*    50% {*/
+        /*        transform: scale(1.5);*/
+        /*    }*/
+        /*    100% {*/
+        /*        transform: scale(1);*/
+        /*    }*/
+        /*}*/
+
+        /*.active {*/
+        /*    transform-origin: left center;*/
+        /*    animation: bounce-in 2s;*/
+        /*}*/
+
+        /*.leave {*/
+        /*    transform-origin: left center;*/
+        /*    animation: bounce-in 2s reverse;*/
+        /*}*/
+    </style>
+    <script src="./../../../library/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <transition name="fade"
+                enter-active-class="animate__animated animate__tada"
+                leave-active-class="animate__animated animate__zoomOutRight"
+    >
+        <h1 v-if="show">hello world</h1>
+    </transition>
+    <button @click="handleClick">显示/不显示</button>
+</div>
+</body>
+<script>
+
+    let vm = new Vue({
+        el: '#root',
+        data: {
+            show: true,
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show;
+            }
+        }
+    });
+
+</script>
+</html>
