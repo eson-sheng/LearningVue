@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head><meta name="generator" content="Hexo 3.9.0">
@@ -21,7 +22,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="对比其他框架 — Vue.js">
     <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
-    <meta property="og:image" content="https://cn.vuejs.org//images/logo.png">
+    <meta property="og:image" content="https://cn.vuejs.org/images/logo.png">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="对比其他框架 — Vue.js">
@@ -42,7 +43,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
     <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
-    <link rel="icon" href="/images/logo.png" type="image/png">
+    <link rel="icon" href="/images/logo.svg">
 
     <meta name="msapplication-TileColor" content="#4fc08d">
     <meta name="theme-color" content="#4fc08d">
@@ -50,12 +51,11 @@
     <meta name="msapplication-config" content="browserconfig.xml">
     <link rel="manifest" href="/manifest.json">
 
-    <!-- <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin> -->
     <!-- <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin> -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin> -->
 
-    <!-- <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel="stylesheet"> -->
-    <!-- <link href="//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Dosis:500&text=Vue.js&display=swap" rel="stylesheet"> -->
 
     <link href="//code.bdstatic.com/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -82,19 +82,30 @@
       ga('create', 'UA-46852172-3', 'cn.vuejs.org');
       ga('send', 'pageview');
     </script>
-  </head>
+
+    <!-- vimeo analytics -->
+    <!-- <script type="text/javascript" defer="defer" src="https://extend.vimeocdn.com/ga/72160148.js"></script> -->
+</head>
   <body class="docs">
+
+    
+
     <div id="mobile-bar">
       <a class="menu-button"></a>
       <a class="logo" href="/"></a>
     </div>
-    <header id="header">
-  <a id="logo" href="/">
-    <img src="/images/logo.png" alt="vue logo">
-    <span>Vue.js</span>
-  </a>
-  <ul id="nav">
-    <li>
+    <div>
+  <div id="v3-banner">
+    <span class="hidden-sm">您在浏览的是 v2.x 及更早版本的文档。</span>v3.x 的文档<a href="https://v3.cn.vuejs.org/">在这里</a>。
+  </div>
+
+  <header id="header">
+    <a id="logo" href="/">
+      <img src="/images/logo.svg" alt="vue logo">
+      <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+      <li>
   <form id="search-form">
     <input type="text" id="search-query-nav" class="search-query st-default-search-input" aria-label="搜索">
   </form>
@@ -115,9 +126,23 @@
     <li><h4>视频教程</h4></li>
     <li>
       <ul>
-        <li><a href="https://www.vuemastery.com/courses/" class="nav-link" target="_blank" rel="sponsored noopener">Vue Mastery (英文)</a></li>
-        <li><a href="https://vueschool.io/?friend=vuejs&utm_source=Vuejs.org&utm_medium=Link&utm_content=Navbar%20Dropdown" class="nav-link" target="_blank" rel="noopener">Vue School (英文)</a></li>
-        <li><a href="https://learning.dcloud.io/" class="nav-link" target="_blank" rel="sponsored noopener">DCloud 视频教程</a></li>
+        <li>
+          <a href="https://www.vuemastery.com/courses/" class="nav-link" target="_blank" rel="sponsored noopener">
+            Vue Mastery (英文)
+          </a>
+        </li>
+        <li>
+          <a href="https://vueschool.io/?friend=vuejs&utm_source=Vuejs.org&utm_medium=Link&utm_content=Navbar%20Dropdown" class="nav-link" target="_blank" rel="sponsored noopener">
+            Vue School (英文)
+          </a>
+        </li>
+        <!-- start: special logic for cn -->
+        <li>
+          <a href="https://learning.dcloud.io/" class="nav-link" target="_blank" rel="sponsored noopener">
+            DCloud 视频教程
+          </a>
+        </li>
+        <!-- end: special logic for cn -->
       </ul>
     </li>
   </ul>
@@ -154,6 +179,7 @@
       <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank" rel="noopener">Twitter</a></li>
       <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank" rel="noopener">博客</a></li>
       <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank" rel="noopener">工作</a></li>
+      <li><a href="https://dev.to/t/vue" class="nav-link" target="_blank" rel="noopener">DEV 社区</a></li>
     </ul></li>
   </ul>
 </li>
@@ -179,8 +205,10 @@
   <ul class="nav-dropdown">
     <li><a href="/support-vuejs/#One-time-Donations" class="nav-link">一次性赞助</a></li>
     <li><a href="/support-vuejs/#Recurring-Pledges" class="nav-link">周期性赞助</a></li>
+    <!-- start: special logic for cn -->
     <li><a href="https://www.smallsticker.com/%E8%B4%B4%E7%BA%B8/vue.html" rel="noopener" class="nav-link">贴纸</a></li>
     <li><a href="https://osholic.com/?utm_source=vue&utm_medium=dropdown" rel="noopener" class="nav-link">周边</a></li>
+    <!-- end: special logic for cn -->
     <li><a href="https://vue.threadless.com" target="_blank" rel="noopener" class="nav-link">T 恤商店</a></li>
   </ul>
 </li>
@@ -200,10 +228,13 @@
   </ul>
 </li>
 
+<!-- start: special logic for cn -->
 <li><a href="https://github.com/vuejs/cn.vuejs.org/" target="_blank" class="nav-link contribute">参与翻译</a></li>
+<!-- end: special logic for cn -->
 
-  </ul>
-</header>
+    </ul>
+  </header>
+</div>
 
     
       <div id="main" class="fix-sidebar">
@@ -216,21 +247,54 @@
     <div class="list">
       <div id="sidebar-sponsors-special">
   <div class="main-sponsor">
+    <!-- start: special logic for cn -->
     <span>特别赞助商</span>
     <div>
     <a href="http://www.dcloud.io/?hmsr=vuejsorg&hmpl=&hmcu=&hmkw=&hmci=" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="/images/dcloud.gif" alt>
+      <img id="s-dcloud" alt="dcloud">
+      <script>
+      (function(){
+        var el = document.getElementById("s-dcloud");
+        var adImg = null;
+        var altImg = "/images/dcloud2.png";
+        var img = "/images/dcloud1.png";
+        el.src = adImg || (altImg && Math.random() >= 0.5 ? altImg : img);
+      })()
+      </script>
     </a>
     </div>
     <div>
-    <a href="https://coding.imooc.com/?c=vuejs&mc_marking=7cf403c3c89d6fccf944791e71e7a959&mc_channel=vuezwsq" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="/images/imooc-sponsor2.png" alt>
+    <a href="https://authing.cn/welcome?from=vuejs" target="_blank" rel="sponsored noopener" class="logo">
+      <img id="s-authing" alt="authing">
+      <script>
+      (function(){
+        var el = document.getElementById("s-authing");
+        var adImg = null;
+        var altImg = null;
+        var img = "/images/authing.svg";
+        el.src = adImg || (altImg && Math.random() >= 0.5 ? altImg : img);
+      })()
+      </script>
     </a>
     </div>
+    <div>
+    <a href="https://qingfuwu.cn?utm_campaign=TR_eSJH7nqW&utm_content=&utm_medium=Web&utm_source=CH_53OxwryD&utm_term=" target="_blank" rel="sponsored noopener" class="logo">
+      <img id="s-qingfuwu" alt="qingfuwu">
+      <script>
+      (function(){
+        var el = document.getElementById("s-qingfuwu");
+        var adImg = null;
+        var altImg = null;
+        var img = "/images/qingfuwu-v2.svg";
+        el.src = adImg || (altImg && Math.random() >= 0.5 ? altImg : img);
+      })()
+      </script>
+    </a>
+    </div>
+    <!-- end: special logic for cn -->
   </div>
 </div>
 <!--
-
 <div id="sidebar-sponsors-platinum-left">
   <div class="main-sponsor">
     <span>白金赞助商</span>
@@ -250,13 +314,18 @@
     <a href="https://www.storyblok.com" target="_blank" rel="sponsored noopener" class="logo">
       <img src="/images/storyblok.png" alt="Storyblok">
     </a>
+    <a href="https://ionicframework.com/vue?utm_source=partner&utm_medium=referral&utm_campaign=vuesponsorship&utm_content=vuedocs" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="/images/ionic.png" alt="Ionic">
+    </a>
+    <a href="https://nuxtjs.org/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="/images/nuxt.png" alt="Nuxt">
+    </a>
     </div>
   </div>
   <a class="become-backer" href="/support-vuejs">
     成为赞助者
   </a>
 </div>
-
 
 -->
 
@@ -266,7 +335,7 @@
           教程
           
             <select class="version-select">
-              <option value="v3">3.x-beta</option>
+              <option value="v3">3.x</option>
               <option value="SELF" selected>2.x</option>
               <option value="v1">1.0</option>
               <option value="012">0.12</option>
@@ -945,6 +1014,12 @@
     <a href="https://www.storyblok.com" target="_blank" rel="sponsored noopener" class="logo">
       <img src="/images/storyblok.png" alt="Storyblok">
     </a>
+    <a href="https://ionicframework.com/vue?utm_source=partner&utm_medium=referral&utm_campaign=vuesponsorship&utm_content=vuedocs" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="/images/ionic.png" alt="Ionic">
+    </a>
+    <a href="https://nuxtjs.org/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="/images/nuxt.png" alt="Nuxt">
+    </a>
     </div>
   </div>
   <a class="become-backer" href="/support-vuejs">
@@ -957,20 +1032,24 @@
 
 
 <div class="content guide with-sidebar comparison-guide">
+  <p class="tip warning v3-warning">
+    您在浏览的是 v2.x 及更早版本的文档。v3.x 的文档<a href="https://v3.cn.vuejs.org/">在这里</a>。
+  </p>
+
   
     
       
 <div id="ad">
-  <span style="float: right;">广告</span>
-  <a href="https://coding.imooc.com/?c=vuejs&mc_marking=2243e4b1af42da32ee6e9f088e646c7c&mc_channel=vuezwsq" target="_blank" rel="nofollow">
-    <img src="/images/imooc-ad3.png" alt="Vue.js实战项目开发教程">
-  </a>
+  <!-- start: special logic for cn -->
+  <div class="wwads-cn wwads-vertical" data-id="53" style="max-width: 200px"></div>
+  <script type="text/javascript" src="https://cdn.wwads.cn/js/makemoney.js" async></script>
+  <!-- end: special logic for cn -->
   <!-- <script
     async
     type="text/javascript"
     src="//cdn.carbonads.com/carbon.js?serve=CEBDT27Y&placement=vuejsorg"
-    id="_carbonads_js">
-  </script> -->
+    id="_carbonads_js"
+  ></script> -->
 </div>
 
 
@@ -980,14 +1059,18 @@
     <h1>对比其他框架</h1>
   
 
-  <div class="ad-pagetop">
+  <!-- start: special logic for cn -->
+  <!-- start: special logic for cn -->
+<!-- <div class="ad-pagetop">
   <a href="http://www.vueshop.com.cn/index.php?http_referer=vuejs" target="_blank" rel="noopener noreferrer">
     <span class="name">VUEshop</span>
     <span class="description">中国免费商城系统 - 搜豹商城系统 - 免费50小时 Vue 视频教程</span>
     <span class="action">立即查看 &gt;</span>
   </a>
-</div>
+</div> -->
+<!-- end: special logic for cn -->
 
+  <!-- end: special logic for cn -->
 
   
     <p>这个页面无疑是最难编写的，但我们认为它也是非常重要的。或许你曾遇到了一些问题并且已经用其他的框架解决了。你来这里的目的是看看 Vue 是否有更好的解决方案。这也是我们在此想要回答的。</p>
@@ -1053,7 +1136,7 @@
 <p>而要注意的是这些限制是故意设计的，这有它的优势。例如，如果你的项目需求非常简单，你就不需要自定义生成过程。你能把它作为一个依赖来更新。如果阅读更多关于<a href="https://github.com/facebookincubator/create-react-app#philosophy" target="_blank" rel="noopener">不同的设计理念</a>。</p>
 <h4 id="向下扩展"><a href="#向下扩展" class="headerlink" title="向下扩展"></a>向下扩展</h4><p>React 学习曲线陡峭，在你开始学 React 前，你需要知道 JSX 和 ES2015，因为许多示例用的是这些语法。你需要学习构建系统，虽然你在技术上可以用 Babel 来实时编译代码，但是这并不推荐用于生产环境。</p>
 <p>就像 Vue 向上扩展好比 React 一样，Vue 向下扩展后就类似于 jQuery。你只要把如下标签放到页面就可以运行：</p>
-<p><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue&quot;&gt;&lt;/script&gt;</code></p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/vue@2"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <p>然后你就可以编写 Vue 代码并应用到生产中，你只要用 min 版 Vue 文件替换掉就不用担心其他的性能问题。</p>
 <p>由于起步阶段不需学 JSX，ES2015 以及构建系统，所以开发者只需不到一天的时间阅读<a href="./">指南</a>就可以建立简单的应用程序。</p>
 <h3 id="原生渲染"><a href="#原生渲染" class="headerlink" title="原生渲染"></a>原生渲染</h3><p>React Native 能使你用相同的组件模型编写有本地渲染能力的 APP (iOS 和 Android)。能同时跨多平台开发，对开发者是非常棒的。相应地，Vue 和 <a href="https://weex.apache.org/" target="_blank" rel="noopener">Weex</a> 会进行官方合作，Weex 是阿里巴巴发起的跨平台用户界面开发框架，同时也正在 Apache 基金会进行项目孵化，Weex 允许你使用 Vue 语法开发不仅仅可以运行在浏览器端，还能被用于开发 iOS 和 Android 上的原生应用的组件。</p>
@@ -1131,6 +1214,10 @@ _bsa.init('custom', 'CKYD62QM', 'placement:vuejsorg',
     <a href="https://github.com/vuejs/cn.vuejs.org/blob/master/src/v2/guide/comparison.md" rel="noopener" target="_blank">
       在 GitHub 上编辑此页！
     </a>
+    <!-- Deployed on
+    <a href="https://url.netlify.com/HJ8X2mxP8" rel="noopener" target="_blank">
+      Netlify
+    </a>. -->
   </div>
 </div>
 

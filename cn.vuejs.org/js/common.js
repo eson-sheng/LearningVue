@@ -48,7 +48,6 @@
       'sync-修饰符': '/v2/guide/components-custom-events.html#sync-修饰符',
       '使用自定义事件的表单输入组件': '/v2/guide/components-custom-events.html#将原生事件绑定到组件',
       '自定义组件的-v-model': '/v2/guide/components-custom-events.html#自定义组件的-v-model',
-      '在组件上使用-v-model': '/v2/guide/components-custom-events.html#自定义组件的-v-model',
       '非父子组件的通信': '/v2/guide/state-management.html',
       '使用插槽分发内容': '/v2/guide/components.html#通过插槽分发内容',
       '编译作用域': '/v2/guide/components-slots.html#编译作用域',
@@ -74,6 +73,7 @@
       // Abort if the current page doesn't match the page regex
       if (!pageRegex.test(window.location.pathname)) return
 
+      // inline: special logic for cn
       var redirectPath = redirects[decodeURIComponent(window.location.hash.slice(1))]
       if (redirectPath) {
         window.location.href = window.location.origin + redirectPath
@@ -260,6 +260,24 @@
   }
 
   /**
+   * Banner closing
+   */
+  function initVueSchoolBanner () {
+    const banner = document.getElementById('vs')
+    if (banner && !localStorage.getItem('VS_SUMMER_BANNER_CLOSED')) {
+      banner.classList.remove('vs-hidden')
+      document.body.classList.add('has-vs-banner')
+      document.getElementById('vs-close').addEventListener('click', function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+        document.getElementById('vs').remove()
+        document.body.classList.remove('has-vs-banner')
+        localStorage.setItem('VS_SUMMER_BANNER_CLOSED', 1)
+      })
+    }
+  }
+
+  /**
   * Modal Video Player
   */
   function initVideoModal () {
@@ -270,6 +288,7 @@
       return
     }
 
+    // inline: special logic for cn
     var videoWrapper = videoModal.querySelector('.video-space')
     var overlay = document.createElement('div')
         overlay.className = 'overlay'
@@ -280,6 +299,7 @@
       videoModal.classList.toggle('open')
       document.body.classList.toggle('stop-scroll')
       document.body.appendChild(overlay)
+      // inline: special logic for cn
       videoWrapper.innerHTML = '<iframe style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;" src="//player.youku.com/embed/XMzMwMTYyODMyNA==?autoplay=true&client_id=37ae6144009e277d" frameborder="0" allowfullscreen></iframe>'
       isOpen = true
     })
@@ -289,6 +309,7 @@
         videoModal.classList.remove('open')
         document.body.classList.remove('stop-scroll')
         document.body.removeChild(overlay)
+        // inline: special logic for cn
         videoWrapper.innerHTML = ''
         isOpen = false
       }
@@ -306,13 +327,21 @@
       var version = e.target.value
       var section = window.location.pathname.match(/\/v\d\/(\w+?)\//)[1]
       if (version === 'SELF') return
-      window.location.assign(
-        'https://' +
-        version +
-        (version && '.') +
-        'vuejs.org/' + section + '/'
-      )
+      // inline: special logic for cn
+      window.location.assign(getVersionOrigin(version) + section + '/')
     })
+  }
+
+  // function: special logic for cn
+  function getVersionOrigin (version) {
+    var originMap = {
+      'v3': 'https://v3.cn.vuejs.org/',
+      'SELF': 'https://cn.vuejs.org/',
+      'v1': 'https://v1-cn.vuejs.org/',
+      '012': 'https://012-cn.vuejs.org/'
+    }
+    var origin = originMap[version]
+    return origin || 'https://' + version + (version && '.') + 'vuejs.org/'
   }
 
   /**

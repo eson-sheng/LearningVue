@@ -157,7 +157,6 @@ pre code.hljs.css::before {
 }
 #ad span {
   color: #4f5959;
-  display: block;
 }
 #ad img {
   width: 125px;
@@ -419,27 +418,41 @@ sup.beta.beta {
 }
 #header {
   background-color: #fff;
-  height: 40px;
-  padding: 10px 60px;
+  padding: 10px 30px 10px 60px;
   position: relative;
   z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+#v3-banner {
+  background-color: #42b983;
+  min-height: 40px;
+  padding: 10px 60px;
+  z-index: 19;
+  box-sizing: border-box;
+  text-align: center;
+  color: #d6ffec;
+  display: none;
+}
+#v3-banner a {
+  color: #fff;
+  font-weight: bold;
+}
+@media screen and (max-width: 900px) {
+  #v3-banner .hidden-sm {
+    display: none;
+  }
 }
 body.docs #header {
   position: fixed;
   width: 100%;
   top: 0;
 }
-body.docs #nav {
-  position: fixed;
-}
 #nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  position: absolute;
-  right: 30px;
-  top: 10px;
-  height: 40px;
   line-height: 40px;
 }
 #nav .break {
@@ -556,6 +569,10 @@ body.docs #nav {
   z-index: 20;
   display: none;
   box-shadow: 0 0 2px rgba(0,0,0,0.25);
+  pointer-events: none;
+}
+#mobile-bar > * {
+  pointer-events: auto;
 }
 #mobile-bar .menu-button {
   position: absolute;
@@ -570,7 +587,7 @@ body.docs #nav {
   position: absolute;
   width: 30px;
   height: 30px;
-  background: url("../images/logo.png") center center no-repeat;
+  background: url("../images/logo.svg") center center no-repeat;
   top: 5px;
   left: 50%;
   margin-left: -15px;
@@ -658,7 +675,7 @@ body.docs #nav {
     position: fixed;
     background-color: #f9f9f9;
     height: 100%;
-    top: 0;
+    top: 40px;
     left: 0;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     transition: all 0.4s cubic-bezier(0.4, 0, 0, 1);
@@ -753,7 +770,7 @@ body.docs #nav {
   filter: none;
   opacity: 1;
 }
-#special-sponsor .become-backer {
+#special .become-backer {
   color: #42b983;
   border: 1px solid #42b983;
   border-radius: 2em;
@@ -769,7 +786,7 @@ body.docs #nav {
   box-sizing: border-box;
   display: none;
   position: fixed;
-  width: 80%;
+  width: 75%;
   height: auto;
   padding: 0.5em;
   background-color: #f9f9f9;
@@ -900,8 +917,11 @@ body {
   box-shadow: none;
   z-index: 9;
 }
-#mobile-bar.top .logo {
-  display: none;
+.with-v3-banner #mobile-bar .logo {
+  display: none !important;
+}
+#v3-banner {
+  display: block;
 }
 #hero,
 #news {
@@ -1009,6 +1029,7 @@ body {
   height: calc(100% - 8px);
   right: 4px;
   top: 4px;
+  cursor: pointer;
 }
 #special {
   background-color: #fff;
@@ -1028,7 +1049,7 @@ body {
   vertical-align: middle;
 }
 #special img {
-  margin: 15px;
+  margin: 15px 10px 0;
 }
 #highlights {
   background-color: #fff;

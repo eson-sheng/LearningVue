@@ -157,7 +157,6 @@ pre code.hljs.css::before {
 }
 #ad span {
   color: #4f5959;
-  display: block;
 }
 #ad img {
   width: 125px;
@@ -463,27 +462,41 @@ i.rotating-clockwise {
 }
 #header {
   background-color: #fff;
-  height: 40px;
-  padding: 10px 60px;
+  padding: 10px 30px 10px 60px;
   position: relative;
   z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+#v3-banner {
+  background-color: #42b983;
+  min-height: 40px;
+  padding: 10px 60px;
+  z-index: 19;
+  box-sizing: border-box;
+  text-align: center;
+  color: #d6ffec;
+  display: none;
+}
+#v3-banner a {
+  color: #fff;
+  font-weight: bold;
+}
+@media screen and (max-width: 900px) {
+  #v3-banner .hidden-sm {
+    display: none;
+  }
 }
 body.docs #header {
   position: fixed;
   width: 100%;
   top: 0;
 }
-body.docs #nav {
-  position: fixed;
-}
 #nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  position: absolute;
-  right: 30px;
-  top: 10px;
-  height: 40px;
   line-height: 40px;
 }
 #nav .break {
@@ -600,6 +613,10 @@ body.docs #nav {
   z-index: 20;
   display: none;
   box-shadow: 0 0 2px rgba(0,0,0,0.25);
+  pointer-events: none;
+}
+#mobile-bar > * {
+  pointer-events: auto;
 }
 #mobile-bar .menu-button {
   position: absolute;
@@ -614,7 +631,7 @@ body.docs #nav {
   position: absolute;
   width: 30px;
   height: 30px;
-  background: url("../images/logo.png") center center no-repeat;
+  background: url("../images/logo.svg") center center no-repeat;
   top: 5px;
   left: 50%;
   margin-left: -15px;
@@ -839,7 +856,7 @@ ul.demo li {
 }
 .main-sponsor img,
 .main-sponsor a {
-  width: 200px;
+  width: 125px;
 }
 .become-backer {
   border: 1px solid #42b983;
@@ -1000,7 +1017,7 @@ ul.demo li {
     position: fixed;
     background-color: #f9f9f9;
     height: 100%;
-    top: 0;
+    top: 40px;
     left: 0;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     transition: all 0.4s cubic-bezier(0.4, 0, 0, 1);
@@ -1426,7 +1443,7 @@ ul.demo li {
   box-sizing: border-box;
   display: none;
   position: fixed;
-  width: 80%;
+  width: 75%;
   height: auto;
   padding: 0.5em;
   background-color: #f9f9f9;
@@ -1871,6 +1888,15 @@ ul.demo li {
   content: "\f00c";
   font-family: FontAwesome;
   background-color: #42b983;
+}
+.content p.warning {
+  border-left-color: #ffa500;
+}
+.content p.warning:before {
+  background-color: #ffa500;
+}
+.content p.v3-warning {
+  margin-top: 0;
 }
 .guide-links {
   margin-top: 2em;
